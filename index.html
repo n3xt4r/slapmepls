@@ -1,106 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ping Pong Game</title>
-<style>
-  body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Information</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0555E9;
+            color: #BFE0D7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-  #pong {
-    width: 800px;
-    height: 400px;
-    background-color: #333;
-    position: relative;
-  }
+        .container {
+            background-color: #0555E9;
+            padding: 20px;
+            border: 1px solid #BFE0D7;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
 
-  .pong-paddle {
-    width: 10px;
-    height: 80px;
-    background-color: #fff;
-    position: absolute;
-  }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-  .pong-paddle-left {
-    left: 0;
-  }
+        th,
+        td {
+            border: 1px solid #BFE0D7;
+            padding: 10px;
+        }
 
-  .pong-paddle-right {
-    right: 0;
-  }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
 
-  .pong-ball {
-    width: 15px;
-    height: 15px;
-    background-color: #fff;
-    position: absolute;
-    border-radius: 50%;
-  }
-</style>
+        .button {
+            background-color: #BFE0D7;
+            color: #0555E9;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .button:hover {
+            background-color: #333;
+            color: #0555E9;
+        }
+    </style>
 </head>
+
 <body>
-  <div id="pong">
-    <div class="pong-paddle pong-paddle-left"></div>
-    <div class="pong-paddle pong-paddle-right"></div>
-    <div class="pong-ball"></div>
-  </div>
-
-  <script>
-    const pong = document.getElementById('pong');
-    const paddleLeft = document.querySelector('.pong-paddle-left');
-    const paddleRight = document.querySelector('.pong-paddle-right');
-    const ball = document.querySelector('.pong-ball');
-
-    let ballX = 2;
-    let ballY = 2;
-    let paddleLeftY = 0;
-    let paddleRightY = 0;
-
-    function render() {
-      ball.style.left = ballX + 'px';
-      ball.style.top = ballY + 'px';
-      paddleLeft.style.top = paddleLeftY + 'px';
-      paddleRight.style.top = paddleRightY + 'px';
-    }
-
-    function update() {
-      ballX += 2;
-      ballY += 2;
-
-      if (ballY > 385 || ballY < 0) {
-        ballY = -ballY;
-      }
-
-      if (ballX > 790 || ballX < 0) {
-        ballX = -ballX;
-      }
-
-      requestAnimationFrame(update);
-    }
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'ArrowUp' && paddleRightY > 0) {
-        paddleRightY -= 10;
-      } else if (event.key === 'ArrowDown' && paddleRightY < 320) {
-        paddleRightY += 10;
-      }
-
-      if (event.key === 'w' && paddleLeftY > 0) {
-        paddleLeftY -= 10;
-      } else if (event.key === 's' && paddleLeftY < 320) {
-        paddleLeftY += 10;
-      }
-    });
-
-    update();
-    render();
-  </script>
+    <div class="container">
+        <h2>Sample Information</h2>
+        <table>
+            <tr>
+                <th>Sample Name</th>
+                <th>Sample Instrument Type</th>
+                <th>Sample Genre</th>
+                <th>Audio Format</th>
+                <th>Audio Bit Rate</th>
+                <th>Create Datetime</th>
+                <th>Producer</th>
+                <th>Original Artist</th>
+                <th>Original Title</th>
+                <th>Download Audio</th>
+                <th>Play Audio</th>
+            </tr>
+            <tr>
+                <td>Sample 1</td>
+                <td>Instrument 1</td>
+                <td>Genre 1</td>
+                <td>Format 1</td>
+                <td>Bit Rate 1</td>
+                <td>2023-10-14 12:00:00</td>
+                <td>Producer 1</td>
+                <td>Artist 1</td>
+                <td>Title 1</td>
+                <td><a href="path/to/audio/file1.mp3" download>Download</a></td>
+                <td><audio controls><source src="path/to/audio/file1.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <tr>
+                <td>Sample 2</td>
+                <td>Instrument 2</td>
+                <td>Genre 2</td>
+                <td>Format 2</td>
+                <td>Bit Rate 2</td>
+                <td>2023-10-14 13:00:00</td>
+                <td>Producer 2</td>
+                <td>Artist 2</td>
+                <td>Title 2</td>
+                <td><a href="path/to/audio/file2.mp3" download>Download</a></td>
+                <td><audio controls><source src="path/to/audio/file2.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
+            </tr>
+            <!-- Add more sample rows as needed -->
+        </table>
+    </div>
 </body>
+
 </html>
