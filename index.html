@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ping Pong Game</title>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+
+  #pong {
+    width: 800px;
+    height: 400px;
+    background-color: #333;
+    position: relative;
+  }
+
+  .pong-paddle {
+    width: 10px;
+    height: 80px;
+    background-color: #fff;
+    position: absolute;
+  }
+
+  .pong-paddle-left {
+    left: 0;
+  }
+
+  .pong-paddle-right {
+    right: 0;
+  }
+
+  .pong-ball {
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+  <div id="pong">
+    <div class="pong-paddle pong-paddle-left"></div>
+    <div class="pong-paddle pong-paddle-right"></div>
+    <div class="pong-ball"></div>
+  </div>
+
+  <script>
+    const pong = document.getElementById('pong');
+    const paddleLeft = document.querySelector('.pong-paddle-left');
+    const paddleRight = document.querySelector('.pong-paddle-right');
+    const ball = document.querySelector('.pong-ball');
+
+    let ballX = 2;
+    let ballY = 2;
+    let paddleLeftY = 0;
+    let paddleRightY = 0;
+
+    function render() {
+      ball.style.left = ballX + 'px';
+      ball.style.top = ballY + 'px';
+      paddleLeft.style.top = paddleLeftY + 'px';
+      paddleRight.style.top = paddleRightY + 'px';
+    }
+
+    function update() {
+      ballX += 2;
+      ballY += 2;
+
+      if (ballY > 385 || ballY < 0) {
+        ballY = -ballY;
+      }
+
+      if (ballX > 790 || ballX < 0) {
+        ballX = -ballX;
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowUp' && paddleRightY > 0) {
+        paddleRightY -= 10;
+      } else if (event.key === 'ArrowDown' && paddleRightY < 320) {
+        paddleRightY += 10;
+      }
+
+      if (event.key === 'w' && paddleLeftY > 0) {
+        paddleLeftY -= 10;
+      } else if (event.key === 's' && paddleLeftY < 320) {
+        paddleLeftY += 10;
+      }
+    });
+
+    update();
+    render();
+  </script>
+</body>
+</html>
