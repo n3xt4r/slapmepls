@@ -28,47 +28,25 @@
             text-align: center;
         }
 
-        .artist {
+        .track {
             margin: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .artist img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
-
-        .artist h3 {
+        .track h3 {
             margin-top: 10px;
         }
 
-        .artist p {
+        .track p {
             margin-top: 10px;
         }
 
-        .artist a {
+        .track a {
             color: #BFE0D7;
             text-decoration: none;
         }
 
-        .button {
-            background-color: #BFE0D7;
-            color: #0555E9;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-            text-decoration: none;
+        .audio-controls {
             margin-top: 20px;
-        }
-
-        .button:hover {
-            background-color: #333;
-            color: #0555E9;
         }
     </style>
 </head>
@@ -76,50 +54,57 @@
 <body>
     <div class="container">
         <h2>Discover New Music</h2>
-        <div class="artist">
+        <div class="track">
             <h3>Dress Code Extended Mix</h3>
-            <p>Artist: Mau P</p>
-            <p>Label: Black Book Records</p>
-            <p>Price: £1.86</p>
+            <p>Artist: Mau P<br>Label: Black Book Records<br>Price: £1.86</p>
+            <a href="path/to/dress-code-mix.mp3" class="play-button">Play Track</a>
         </div>
-        <div class="artist">
-            <h3>Legacy Extended Mix</h3>
-            <p>Artist: John Summit, VLTRA (IT)</p>
-            <p>Label: Experts Only</p>
-            <p>Price: £1.30</p>
-        </div>
-        <div class="artist">
-            <h3>Saving Up Extended</h3>
-            <p>Artist: Dom Dolla</p>
-            <p>Label: Three Six Zero Recordings</p>
-            <p>Price: £1.86</p>
-        </div>
-        <div class="artist">
-            <h3>Drums Extended Version</h3>
-            <p>Artist: James Hype, Kim Petras</p>
-            <p>Label: Universal-Island Records Ltd.</p>
-            <p>Price: £1.30</p>
-        </div>
-        <div class="artist">
-            <h3>Losing Control Extended Mix</h3>
-            <p>Artist: Odd Mob, OMNOM</p>
-            <p>Label: Experts Only</p>
-            <p>Price: £1.30</p>
-        </div>
-        <div class="artist">
-            <h3>365 Original Mix</h3>
-            <p>Artist: Camden Cox, Biscits</p>
-            <p>Label: Insomniac Records</p>
-            <p>Price: £1.30</p>
-        </div>
-        <div class="artist">
-            <h3>Aria Extended Mix</h3>
-            <p>Artist: Argy, Omnya</p>
-            <p>Label: Afterlife Records</p>
-        </div>
-        <!-- Add more artists and tracks as needed -->
 
-        <a class="button" href="more-artists.html">Explore More Artists</a>
+        <div class="audio-controls" style="display: none;">
+            <label for="pitch">Pitch:</label>
+            <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1">
+            <br>
+            <label for="tempo">Tempo:</label>
+            <input type="range" id="tempo" min="0.5" max="2" step="0.1" value="1">
+            <br>
+            <label for="eq">Equalization:</label>
+            <input type="range" id="eq" min="0" max="100" step="1" value="50">
+        </div>
+
+        <script>
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const audioControls = document.querySelector('.audio-controls');
+                    audioControls.style.display = 'block';
+
+                    const audio = new Audio(this.getAttribute('href'));
+                    audio.controls = true;
+                    document.body.appendChild(audio);
+
+                    const pitchControl = document.getElementById('pitch');
+                    const tempoControl = document.getElementById('tempo');
+                    const eqControl = document.getElementById('eq');
+
+                    pitchControl.addEventListener('input', function () {
+                        const pitchValue = parseFloat(this.value);
+                        audio.playbackRate = pitchValue;
+                    });
+
+                    tempoControl.addEventListener('input', function () {
+                        const tempoValue = parseFloat(this.value);
+                        audio.playbackRate = tempoValue;
+                    });
+
+                    eqControl.addEventListener('input', function () {
+                        const eqValue = parseFloat(this.value) / 100;
+                        const gainNode = audioContext.createGain();
+                        gainNode.gain.value = eqValue;
+                        audio.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                    });
+                });
+            });
+        </script>
     </div>
 </body>
 
