@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Information</title>
+    <title>Discover New Music</title>
     <style>
         body {
             font-family: 'Courier New', monospace;
@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
         }
 
@@ -27,20 +28,27 @@
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .artist {
+            margin: 20px 0;
         }
 
-        th,
-        td {
-            border: 1px solid #BFE0D7;
-            padding: 10px;
+        .artist img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
         }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .artist h3 {
+            margin-top: 10px;
+        }
+
+        .artist p {
+            margin-top: 10px;
+        }
+
+        .artist a {
+            color: #BFE0D7;
+            text-decoration: none;
         }
 
         .button {
@@ -51,6 +59,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-family: 'Courier New', monospace;
+            text-decoration: none;
+            margin-top: 20px;
         }
 
         .button:hover {
@@ -62,49 +72,22 @@
 
 <body>
     <div class="container">
-        <h2>Sample Information</h2>
-        <table>
-            <tr>
-                <th>Sample Name</th>
-                <th>Sample Instrument Type</th>
-                <th>Sample Genre</th>
-                <th>Audio Format</th>
-                <th>Audio Bit Rate</th>
-                <th>Create Datetime</th>
-                <th>Producer</th>
-                <th>Original Artist</th>
-                <th>Original Title</th>
-                <th>Download Audio</th>
-                <th>Play Audio</th>
-            </tr>
-            <tr>
-                <td>Sample 1</td>
-                <td>Instrument 1</td>
-                <td>Genre 1</td>
-                <td>Format 1</td>
-                <td>Bit Rate 1</td>
-                <td>2023-10-14 12:00:00</td>
-                <td>Producer 1</td>
-                <td>Artist 1</td>
-                <td>Title 1</td>
-                <td><a href="audio/do or die (instrumental).mp3" download>Download</a></td>
-                <td><audio controls><source src="audio/do or die (instrumental).mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
-            </tr>
-            <tr>
-                <td>Sample 2</td>
-                <td>Instrument 2</td>
-                <td>Genre 2</td>
-                <td>Format 2</td>
-                <td>Bit Rate 2</td>
-                <td>2023-10-14 13:00:00</td>
-                <td>Producer 2</td>
-                <td>Artist 2</td>
-                <td>Title 2</td>
-                <td><a href="path/to/audio/file2.mp3" download>Download</a></td>
-                <td><audio controls><source src="path/to/audio/file2.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio></td>
-            </tr>
-            <!-- Add more sample rows as needed -->
-        </table>
+        <h2>Discover New Music</h2>
+        <div class="artist">
+            <img src="path/to/artist1/image.jpg" alt="Artist 1">
+            <h3>Artist 1</h3>
+            <p>Description of Artist 1 and their music. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="link/to/artist1/music" target="_blank">Listen to Music</a>
+        </div>
+        <div class="artist">
+            <img src="path/to/artist2/image.jpg" alt="Artist 2">
+            <h3>Artist 2</h3>
+            <p>Description of Artist 2 and their music. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="link/to/artist2/music" target="_blank">Listen to Music</a>
+        </div>
+        <!-- Add more artists as needed -->
+
+        <a class="button" href="more-artists.html">Explore More Artists</a>
     </div>
 </body>
 
