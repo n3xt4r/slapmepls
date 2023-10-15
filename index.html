@@ -1,111 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover New Music</title>
-    <style>
-        body {
-            font-family: 'Courier New', monospace;
-            background-color: #0555E9;
-            color: #BFE0D7;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: #0555E9;
-            padding: 20px;
-            border: 1px solid #BFE0D7;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        .track {
-            margin: 20px 0;
-        }
-
-        .track h3 {
-            margin-top: 10px;
-        }
-
-        .track p {
-            margin-top: 10px;
-        }
-
-        .track a {
-            color: #BFE0D7;
-            text-decoration: none;
-        }
-
-        .audio-controls {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Fresh South African Music!</title>
+	<script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
-        <h2>Discover New Music</h2>
-        <div class="track">
-            <h3>Instrumental Mix</h3>
-            <p>Artist: Unknown<br>Label: MolaMusic Records<br>Price: £1.86</p>
-            <a href="audio/do or die (instrumental).mp3" class="play-button">Play Track</a>
-        </div>
-
-        <div class="audio-controls" style="display: none;">
-            <label for="pitch">Pitch:</label>
-            <input type="range" id="pitch" min="0.5" max="2" step="0.1" value="1">
-            <br>
-            <label for="tempo">Tempo:</label>
-            <input type="range" id="tempo" min="0.5" max="2" step="0.1" value="1">
-            <br>
-            <label for="eq">Equalization:</label>
-            <input type="range" id="eq" min="0" max="100" step="1" value="50">
-        </div>
-
-        <script>
-            document.querySelectorAll('.play-button').forEach(button => {
-                button.addEventListener('click', function () {
-                    const audioControls = document.querySelector('.audio-controls');
-                    audioControls.style.display = 'block';
-
-                    const audio = new Audio(this.getAttribute('href'));
-                    audio.controls = true;
-                    document.body.appendChild(audio);
-
-                    const pitchControl = document.getElementById('pitch');
-                    const tempoControl = document.getElementById('tempo');
-                    const eqControl = document.getElementById('eq');
-
-                    pitchControl.addEventListener('input', function () {
-                        const pitchValue = parseFloat(this.value);
-                        audio.playbackRate = pitchValue;
-                    });
-
-                    tempoControl.addEventListener('input', function () {
-                        const tempoValue = parseFloat(this.value);
-                        audio.playbackRate = tempoValue;
-                    });
-
-                    eqControl.addEventListener('input', function () {
-                        const eqValue = parseFloat(this.value) / 100;
-                        const gainNode = audioContext.createGain();
-                        gainNode.gain.value = eqValue;
-                        audio.connect(gainNode);
-                        gainNode.connect(audioContext.destination);
-                    });
-                });
-            });
-        </script>
+        <h2>SlapMePls Music</h2>
+		<h3>Fresh South African Music</h3>
+        <table>
+            <tr>
+                <th>Artist/Band/Act Name</th>
+				<th>Origin(City,Country)</th>
+                <th>Genres</th>
+				<th>Discography</th>
+                <th>Years Active</th>
+                <th>Labels</th>
+                <th>Members</th>
+				<th>Past members</th>
+				<th>Website</th>
+                <th>Play Audio</th>
+            </tr>
+            <tr>
+                <td>Artist 1</td>
+                <td>Cape Town, South Africa</td>
+                <td>Hip Hop</td>
+                <td>Hello CBD * One Life</td>
+                <td>2009-present</td>
+                <td>Grassy Roots</td>
+                <td>Tyrone T * Keith Jola</td>
+                <td>Andrea Samson</td>
+                <td>No website</td>
+				<td>
+					<audio controls src="audio/do or die (instrumental).mp3"></audio>
+					<div>
+					  <label for="rate">Adjust playback rate:</label>
+					  <input id="rate" type="range" min="0.25" max="3" step="0.05" value="1" />
+					</div>
+					<div>
+					  <label for="pitch">Preserve pitch:</label>
+					  <input type="checkbox" id="pitch" name="pitch" checked />
+					</div>		
+				</td>
+			</tr>
+            <tr>
+                <th>Artist/Band/Act Name</th>
+				<th>Origin(City,Country)</th>
+                <th>Genres</th>
+				<th>Discography</th>
+                <th>Years Active</th>
+                <th>Labels</th>
+                <th>Members</th>
+				<th>Past members</th>
+				<th>Website</th>
+                <th>Play Audio</th>
+            </tr>
+            <tr>
+                <td>Artist 1</td>
+                <td>Cape Town, South Africa</td>
+                <td>Hip Hop</td>
+                <td>Hello CBD * One Life</td>
+                <td>2009-present</td>
+                <td>Grassy Roots</td>
+                <td>Tyrone T * Keith Jola</td>
+                <td>Andrea Samson</td>
+                <td>No website</td>
+				<td>
+					<audio controls src="audio/do or die (instrumental).mp3"></audio>
+					<div>
+					  <label for="rate">Adjust playback rate:</label>
+					  <input id="rate" type="range" min="0.25" max="3" step="0.05" value="1" />
+					</div>
+					<div>
+					  <label for="pitch">Preserve pitch:</label>
+					  <input type="checkbox" id="pitch" name="pitch" checked />
+					</div>		
+				</td>
+			</tr>
+        </table>
     </div>
 </body>
-
 </html>
